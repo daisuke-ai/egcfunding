@@ -153,7 +153,7 @@ const experienceTiers = [
   }
 ];
 
-export default function ServicesPage() {
+export default function ProgramsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -212,28 +212,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Geographic Coverage */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8 text-center">Geographic Coverage</h2>
-          <p className="text-center text-gray-600 mb-8">
-            We provide lending services nationwide, except for MN, VT, UT, OR, SD, ND.
-            Special requirements apply in NV and AZ.
-          </p>
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <div className="flex items-center justify-center gap-8 text-sm mt-8">
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 bg-blue-600 rounded"></div>
-                <span>Available</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 bg-gray-200 rounded"></div>
-                <span>Not Available</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="bg-blue-900 text-white py-20">
