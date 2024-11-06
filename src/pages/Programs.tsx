@@ -1,226 +1,174 @@
 import React from 'react';
-import { Hammer, Building2, Home, Clock } from 'lucide-react';
+import { 
+  Home,
+  Building2,
+  Building,
+  Briefcase,
+  LineChart,
+  ArrowRight,
+  Shield,
+  Clock,
+  CheckCircle2,
+  Hammer
+} from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from "../components/ui/Button";
+import LoanProgramCard from '../components/LoanProgramCard';
 import LoanProduct from '../components/LoanProduct';
 import ExperienceTier from '../components/ExperienceTier';
 
-const loanProducts = [
+const loanPrograms = [
   {
-    title: "Fix & Flip Loans",
-    description: "Quick financing for property renovation and resale projects.",
-    Icon: Hammer,
+    title: "Fix and Flip",
+    description: "Short-term financing for investors looking to purchase, renovate, and sell properties for profit.",
+    Icon: Home,
+    minAmount: "$50,000",
+    maxAmount: "$3.5M",
+    term: "6-24 months",
+    ltv: "Up to 90%",
     features: [
-      { label: "Loan Amount", value: "$50K - $3.5M" },
-      { label: "LTC", value: "Up to 90%" },
-      { label: "Rehab Costs", value: "100%" },
-      { label: "Term Length", value: "6-24 months" }
+      { label: "Term Length", value: "6-24 months" },
+      { label: "Rehab Costs", value: "100% covered" },
+      { label: "Interest Rate", value: "From 7.99%" },
+      { label: "Closing Time", value: "As fast as 10 days" }
     ]
   },
   {
     title: "Ground Up Construction",
-    description: "Comprehensive funding for new construction projects.",
+    description: "Comprehensive funding for new construction projects from foundation to completion.",
     Icon: Building2,
+    minAmount: "$100,000",
+    maxAmount: "$5M",
+    term: "12-24 months",
+    ltv: "Up to 85%",
     features: [
-      { label: "LTC", value: "Up to 90%" },
-      { label: "Construction Costs", value: "100%" },
       { label: "Term Length", value: "12-24 months" },
-      { label: "Experience Required", value: "1-2 Projects" }
+      { label: "Construction Costs", value: "100% covered" },
+      { label: "Draw Schedule", value: "Flexible" },
+      { label: "Experience Required", value: "2+ projects" }
     ]
   },
   {
-    title: "Rental Property Loans",
-    description: "Long-term financing solutions for rental properties.",
-    Icon: Home,
+    title: "Single Property Rentals",
+    description: "Long-term financing solutions for single-family rental property investments.",
+    Icon: Building,
+    minAmount: "$75,000",
+    maxAmount: "$2M",
+    term: "30 years",
+    ltv: "Up to 80%",
     features: [
-      { label: "LTV", value: "Up to 80%" },
       { label: "Term Length", value: "30 years" },
       { label: "Amortization", value: "30 years" },
-      { label: "Rates From", value: "6.99%" }
-    ]
-  }
-];
-
-const experienceTiers = [
-  {
-    tier: 5,
-    experience: "10+ Completed Projects",
-    features: [
-      {
-        type: "Light Rehab (≤ 25% PP)",
-        requirements: [
-          "90% LTC / 100% Rehab",
-          "Up to 75% ARV",
-          "Min FICO 660"
-        ]
-      },
-      {
-        type: "Heavy Rehab (50-100% PP)",
-        requirements: [
-          "90% LTC / 100% Rehab",
-          "Up to 75% ARV",
-          "Min FICO 660"
-        ]
-      },
-      {
-        type: "Extensive Rehab (≥ 100% PP)",
-        requirements: [
-          "85% LTC / 100% Rehab",
-          "Max 90% LTFC",
-          "Up to 70% ARV",
-          "Min FICO 680"
-        ]
-      }
+      { label: "Interest Rate", value: "From 6.99%" },
+      { label: "Cash-Out", value: "Available" }
     ]
   },
   {
-    tier: 4,
-    experience: "5-9 Completed Projects",
+    title: "Stabilized Bridge",
+    description: "Short-term financing for acquiring or refinancing stabilized properties.",
+    Icon: Briefcase,
+    minAmount: "$100,000",
+    maxAmount: "$4M",
+    term: "12-36 months",
+    ltv: "Up to 75%",
     features: [
-      {
-        type: "Light/Moderate Rehab (≤ 50% PP)",
-        requirements: [
-          "90% LTC / 100% Rehab",
-          "Up to 75% ARV",
-          "Min FICO 660"
-        ]
-      },
-      {
-        type: "Heavy Rehab (50-100% PP)",
-        requirements: [
-          "85% LTC / 100% Rehab",
-          "Up to 75% ARV",
-          "Min FICO 660"
-        ]
-      }
+      { label: "Term Length", value: "12-36 months" },
+      { label: "Prepayment", value: "Flexible" },
+      { label: "Interest Rate", value: "From 7.49%" },
+      { label: "Occupancy", value: "Min. 90%" }
     ]
   },
   {
-    tier: 3,
-    experience: "3-4 Completed Projects",
+    title: "Rental Portfolios",
+    description: "Tailored financing solutions for investors with multiple rental properties.",
+    Icon: LineChart,
+    minAmount: "$250,000",
+    maxAmount: "$10M",
+    term: "30 years",
+    ltv: "Up to 75%",
     features: [
-      {
-        type: "Light/Moderate Rehab (≤ 50% PP)",
-        requirements: [
-          "85% LTC / 100% Rehab",
-          "Up to 75% ARV",
-          "Min FICO 660"
-        ]
-      },
-      {
-        type: "Heavy Rehab (50-100% PP)",
-        requirements: [
-          "80% LTC / 100% Rehab",
-          "Up to 75% ARV",
-          "Min FICO 660"
-        ]
-      }
-    ]
-  },
-  {
-    tier: 2,
-    experience: "1-2 Completed Projects",
-    features: [
-      {
-        type: "Light Rehab (≤ 25% PP)",
-        requirements: [
-          "80% LTC / 100% Rehab",
-          "Up to 70% ARV",
-          "Min FICO 680"
-        ]
-      },
-      {
-        type: "Heavy Rehab (50-100% PP)",
-        requirements: [
-          "75% LTC / 100% Rehab",
-          "Up to 70% ARV",
-          "Min FICO 680"
-        ]
-      }
-    ]
-  },
-  {
-    tier: 1,
-    experience: "No Experience",
-    features: [
-      {
-        type: "Light Rehab Only (≤ 25% PP)",
-        requirements: [
-          "FICO 720+: 80% LTC / 100% Rehab",
-          "FICO 680+: 75% LTC / 100% Rehab",
-          "Up to 70% ARV"
-        ]
-      }
+      { label: "Term Length", value: "30 years" },
+      { label: "Properties", value: "5+ units" },
+      { label: "Interest Rate", value: "From 6.49%" },
+      { label: "Blanket Loans", value: "Available" }
     ]
   }
 ];
 
 export default function ProgramsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-blue-900 text-white py-20">
+      <section className="bg-gradient-to-r from-blue-900 to-blue-800 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Lending Solutions</h1>
-          <p className="text-xl">Flexible financing options tailored to your investment strategy</p>
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Flexible Lending Solutions
+            </h1>
+            <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-8">
+              Choose from our comprehensive range of loan programs designed for every real estate investment strategy
+            </p>
+            <Button asChild size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
+              <Link to="/contact">Get Started Today</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Loan Products */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center">Loan Programs</h2>
+      {/* Benefits Strip */}
+      <section className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid md:grid-cols-3 gap-8">
-            {loanProducts.map((product, index) => (
-              <LoanProduct key={index} {...product} />
+            {[
+              { icon: Clock, title: "Fast Approvals", desc: "Get approved in as little as 24 hours" },
+              { icon: Shield, title: "Flexible Terms", desc: "Customized solutions for your needs" },
+              { icon: CheckCircle2, title: "Simple Process", desc: "Streamlined application and closing" }
+            ].map((benefit, index) => (
+              <div key={index} className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <benefit.icon className="w-6 h-6 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">{benefit.title}</h3>
+                  <p className="text-sm text-gray-600">{benefit.desc}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Experience Tiers */}
+      {/* Loan Programs */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center">Experience Tiers</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {experienceTiers.map((tier, index) => (
-              <ExperienceTier key={index} {...tier} />
+          <div className="grid md:grid-cols-2 gap-8">
+            {loanPrograms.map((program, index) => (
+              <LoanProgramCard key={index} {...program} />
             ))}
-          </div>
-          
-          {/* Additional Requirements Note */}
-          <div className="mt-12 bg-gray-50 rounded-xl p-8">
-            <h3 className="text-xl font-bold mb-4">Additional Requirements</h3>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h4 className="font-semibold mb-2">Interest Reserve Requirements (FICO)</h4>
-                <ul className="list-disc list-inside space-y-1 text-gray-600">
-                  <li>600-620: 12 months IR</li>
-                  <li>620-640: 9 months IR</li>
-                  <li>640-660: 6 months IR</li>
-                  <li>660-680: 3 months IR</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Special Considerations</h4>
-                <ul className="list-disc list-inside space-y-1 text-gray-600">
-                  <li>Rural properties: 65% Initial LTC</li>
-                  <li>Lopsided deals: 85% max total LTFC</li>
-                  <li>Less than 5 tradelines: 6 month IR required</li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-
       {/* CTA Section */}
-      <section className="bg-blue-900 text-white py-20">
+      <section className="bg-blue-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl mb-8">Contact us today to discuss your investment needs.</p>
-          <button className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-            Apply Now
-          </button>
+          <h2 className="text-3xl font-bold text-white mb-6">
+            Ready to Start Your Investment Journey?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Our lending experts are ready to help you choose the right financing solution
+          </p>
+          <div className="flex gap-4 justify-center">
+            <Button asChild size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
+              <Link to="/contact">Apply Now</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Link to="/contact">
+                Schedule Consultation
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>
