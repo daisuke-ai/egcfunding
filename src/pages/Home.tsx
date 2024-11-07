@@ -63,6 +63,19 @@ const loanPrograms = [
 ];
 
 export default function HomePage() {
+  const scrollToProgram = (programId: string) => {
+    const element = document.getElementById(programId);
+    if (element) {
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 0;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - headerHeight - 20, // 20px additional offset for spacing
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -77,8 +90,12 @@ export default function HomePage() {
                 Customized financial solutions for visionary investors. From fix-and-flip to ground-up construction, we're your partner in growth.
               </p>
               <div className="flex gap-4">
-                <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                  <Link to="/programs">Explore Programs</Link>
+                <Button 
+                  size="lg" 
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                  onClick={() => scrollToProgram('loan-programs')}
+                >
+                  Explore Programs
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <Link to="/contact">Contact Us</Link>
@@ -132,7 +149,7 @@ export default function HomePage() {
       </section>
 
       {/* Loan Programs Overview */}
-      <section className="py-20">
+      <section id="loan-programs" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold mb-12 text-center text-blue-900">Our Loan Programs</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -144,7 +161,7 @@ export default function HomePage() {
                 <h3 className="text-xl font-semibold mb-2 text-blue-800">{program.title}</h3>
                 <p className="text-gray-600 mb-4">{program.description}</p>
                 <Link 
-                  to="/programs" 
+                  to={`/programs#${program.title.toLowerCase().replace(/\s+/g, '-')}`}
                   className="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center"
                 >
                   Learn More <ArrowRight className="ml-2 w-4 h-4" />

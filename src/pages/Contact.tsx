@@ -3,10 +3,60 @@ import { Mail, Phone, MapPin, Clock, ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 
 export default function ContactPage() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, this would handle form submission
-    alert('Form submitted! This is a demo version.');
+    const form = e.target as HTMLFormElement;
+    
+    const formData = {
+      portalId: "47974339",
+      formGuid: "07b56362-ee36-4b39-84b4-c4ea057bb280",
+      fields: [
+        {
+          name: "firstname",
+          value: (form.querySelector('#firstName') as HTMLInputElement).value
+        },
+        {
+          name: "lastname",
+          value: (form.querySelector('#lastName') as HTMLInputElement).value
+        },
+        {
+          name: "email",
+          value: (form.querySelector('#email') as HTMLInputElement).value
+        },
+        {
+          name: "phone",
+          value: (form.querySelector('#phone') as HTMLInputElement).value
+        },
+        {
+          name: "loan_type",
+          value: (form.querySelector('#loanType') as HTMLSelectElement).value
+        },
+        {
+          name: "message",
+          value: (form.querySelector('#message') as HTMLTextAreaElement).value
+        }
+      ]
+    };
+
+    try {
+      const response = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/47974339/07b56362-ee36-4b39-84b4-c4ea057bb280`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        alert('Thank you for your submission! We will contact you shortly.');
+        form.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting the form. Please try again later.');
+    }
   };
 
   const contactInfo = [

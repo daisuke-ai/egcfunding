@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { 
   Home,
   Building2,
@@ -8,17 +8,15 @@ import {
   ArrowRight,
   Shield,
   Clock,
-  CheckCircle2,
-  Hammer
+  CheckCircle2
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from "../components/ui/Button";
 import LoanProgramCard from '../components/LoanProgramCard';
-import LoanProduct from '../components/LoanProduct';
-import ExperienceTier from '../components/ExperienceTier';
 
 const loanPrograms = [
   {
+    id: 'fix-and-flip',
     title: "Fix and Flip",
     description: "Short-term financing for investors looking to purchase, renovate, and sell properties for profit.",
     Icon: Home,
@@ -34,6 +32,7 @@ const loanPrograms = [
     ]
   },
   {
+    id: 'ground-up-construction',
     title: "Ground Up Construction",
     description: "Comprehensive funding for new construction projects from foundation to completion.",
     Icon: Building2,
@@ -49,6 +48,7 @@ const loanPrograms = [
     ]
   },
   {
+    id: 'single-property-rentals',
     title: "Single Property Rentals",
     description: "Long-term financing solutions for single-family rental property investments.",
     Icon: Building,
@@ -64,6 +64,7 @@ const loanPrograms = [
     ]
   },
   {
+    id: 'stabilized-bridge',
     title: "Stabilized Bridge",
     description: "Short-term financing for acquiring or refinancing stabilized properties.",
     Icon: Briefcase,
@@ -79,6 +80,7 @@ const loanPrograms = [
     ]
   },
   {
+    id: 'rental-portfolios',
     title: "Rental Portfolios",
     description: "Tailored financing solutions for investors with multiple rental properties.",
     Icon: LineChart,
@@ -96,6 +98,25 @@ const loanPrograms = [
 ];
 
 export default function ProgramsPage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Handle hash-based navigation
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: elementPosition - headerHeight - 20,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, [location]);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -147,8 +168,10 @@ export default function ProgramsPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
-            {loanPrograms.map((program, index) => (
-              <LoanProgramCard key={index} {...program} />
+            {loanPrograms.map((program) => (
+              <div key={program.id} id={program.id}>
+                <LoanProgramCard {...program} />
+              </div>
             ))}
           </div>
         </div>
