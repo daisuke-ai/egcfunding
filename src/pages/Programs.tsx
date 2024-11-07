@@ -108,8 +108,13 @@ export default function ProgramsPage() {
             <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-8">
               Choose from our comprehensive range of loan programs designed for every real estate investment strategy
             </p>
-            <Button asChild size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
-              <Link to="/contact">Get Started Today</Link>
+            <Button 
+              size="lg" 
+              variant="secondary"
+              className="!bg-white !text-blue-900 hover:!bg-blue-50 whitespace-nowrap"
+              showForm
+            >
+              Get Started Today
             </Button>
           </div>
         </div>
@@ -159,14 +164,24 @@ export default function ProgramsPage() {
             Our lending experts are ready to help you choose the right financing solution
           </p>
           <div className="flex gap-4 justify-center">
-            <Button asChild size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
-              <Link to="/contact">Apply Now</Link>
+            <Button 
+              size="lg" 
+              variant="secondary"
+              className="!bg-white !text-blue-900 hover:!bg-blue-50 whitespace-nowrap"
+              showForm
+            >
+              Apply Now
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-              <Link to="/contact">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-white hover:bg-white/10 whitespace-nowrap flex items-center"
+              showForm
+            >
+              <span className="flex items-center">
                 Schedule Consultation
                 <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
+              </span>
             </Button>
           </div>
         </div>

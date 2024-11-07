@@ -158,7 +158,7 @@ export default function ContactPage() {
                   ></textarea>
                 </div>
 
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full !bg-blue-600 hover:!bg-blue-700">
                   Send Message
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>

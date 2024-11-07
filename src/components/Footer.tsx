@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Building2 className="w-6 h-6 text-blue-500" />
-              <span className="text-xl font-bold text-white">Elevate Funding</span>
+              <span className="text-xl font-bold text-white">EGC Funding</span>
             </div>
             <p className="text-gray-400 text-sm">
               Empowering real estate investors with flexible financing solutions tailored to their needs.
@@ -52,7 +52,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center text-gray-400">
                 <Mail className="w-5 h-5 mr-3 text-blue-500" />
-                <span>info@elevatefunding.com</span>
+                <span>info@egcfunding.com</span>
               </li>
               <li className="flex items-center text-gray-400">
                 <MapPin className="w-5 h-5 mr-3 text-blue-500" />
@@ -79,7 +79,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Elevate Global Funding. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Elevate Global Capital Funding. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/privacy" className="hover:text-blue-500 transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-blue-500 transition-colors">Terms of Service</Link>

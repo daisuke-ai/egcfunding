@@ -16,7 +16,7 @@ export default function Header() {
               <TrendingUp className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent">
-              Elevate Global Funding
+              Elevate Global Capital Funding
             </span>
           </Link>
           

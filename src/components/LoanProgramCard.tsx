@@ -62,14 +62,22 @@ export default function LoanProgramCard({
       </div>
 
       <div className="flex gap-4">
-        <Button asChild variant="primary" className="flex-1">
-          <Link to="/contact">Apply Now</Link>
+        <Button 
+          variant="primary" 
+          className="flex-1 !bg-blue-600 hover:!bg-blue-700" 
+          showForm
+        >
+          Apply Now
         </Button>
-        <Button asChild variant="outline" className="flex-1">
-          <Link to="/contact" className="inline-flex items-center">
+        <Button 
+          variant="outline" 
+          className="flex-1 border-gray-300 hover:bg-gray-50" 
+          showForm
+        >
+          <span className="inline-flex items-center">
             Learn More
             <ArrowRight className="ml-2 w-4 h-4" />
-          </Link>
+          </span>
         </Button>
       </div>
     </div>
