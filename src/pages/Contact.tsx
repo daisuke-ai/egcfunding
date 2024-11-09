@@ -63,20 +63,20 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Call Us",
-      content: "+1 (555) 123-4567",
-      description: "Mon-Fri from 9am to 6pm EST"
+      content: "+1 808.757.4053",
+      description: "Mon-Fri from 9am to 6pm HST"
     },
     {
       icon: Mail,
       title: "Email Us",
-      content: "info@elevatefunding.com",
+      content: "info@elevateglobalventures.com",
       description: "We'll respond within 24 hours"
     },
     {
       icon: MapPin,
       title: "Visit Us",
-      content: "Miami, Florida",
-      description: "By appointment only"
+      content: "200 N Vineyard Blvd, Ste. A325 A325 - 5603",
+      description: "Honolulu, HI 96817"
     }
   ];
 

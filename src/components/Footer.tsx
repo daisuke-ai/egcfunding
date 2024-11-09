@@ -48,15 +48,15 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-center text-gray-400">
                 <Phone className="w-5 h-5 mr-3 text-blue-500" />
-                <span>+1 (555) 123-4567</span>
+                <span>+1 808.757.4053</span>
               </li>
               <li className="flex items-center text-gray-400">
                 <Mail className="w-5 h-5 mr-3 text-blue-500" />
-                <span>info@egcfunding.com</span>
+                <span>info@elevateglobal.com</span>
               </li>
               <li className="flex items-center text-gray-400">
                 <MapPin className="w-5 h-5 mr-3 text-blue-500" />
-                <span>Miami, FL</span>
+                <span>200 N Vineyard Blvd, Ste. A325 A325 - 5603, Honolulu, HI 96817</span>
               </li>
             </ul>
           </div>
