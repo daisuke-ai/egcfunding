@@ -14,7 +14,8 @@ export default function Header() {
     { path: '/', label: 'Home' },
     { path: '/programs', label: 'Programs' },
     { path: '/about', label: 'About Us' },
-    { path: '/contact', label: 'Contact' }
+    { path: '/contact', label: 'Contact' },
+    { path: '/blog', label: 'Blog' }
   ];
 
   useEffect(() => {
