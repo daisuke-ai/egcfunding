@@ -69,7 +69,7 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: "Email Us",
-      content: "info@elevateglobalventures.com",
+      content: "hello@egcfunding.com",
       description: "We'll respond within 24 hours"
     },
     {
